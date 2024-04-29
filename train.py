@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 import json
 from tqdm import tqdm
+from torch.optim import lr_scheduler
 
 from medmnist import PathMNIST, ChestMNIST, OCTMNIST, PneumoniaMNIST, RetinaMNIST, BreastMNIST, DermaMNIST
 from torchvision import models, datasets, transforms
@@ -223,9 +224,10 @@ if __name__ == "__main__":
     # 损失函数和优化器
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.AdamW(model.parameters(), lr=0.001)
+    scheduler = lr_scheduler.MultiStepLR(optimizer, milestones=[49, 74], gamma=0.1)  # 注意epoch是从0开始的
 
     # 训练循环
-    num_epochs = 50
+    num_epochs = 100
     best_acc = 0
     for epoch in range(num_epochs):
         model.train()
@@ -266,6 +268,9 @@ if __name__ == "__main__":
                 test_correct += pred.eq(target.view_as(pred)).sum().item()
         
         print(f'Test Accuracy: {100. * test_correct / len(test_loader.dataset)}%')
+
+        # 更新学习率
+        scheduler.step()
 
         if (100. * correct / len(val_loader.dataset)) > best_acc:
             best_acc = (100. * correct / len(val_loader.dataset))
