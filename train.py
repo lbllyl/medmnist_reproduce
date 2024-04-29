@@ -46,22 +46,22 @@ if __name__ == "__main__":
                 transforms.ToTensor(),
                 transforms.Normalize((0.1307,), (0.3081,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
         test_loader = torch.utils.data.DataLoader(
             datasets.MNIST('data', train=False, transform=transforms.Compose([
                 transforms.ToTensor(),
                 transforms.Normalize((0.1307,), (0.3081,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
     # medmnist加载数据集
     elif datasets_name == "pathmnist":
         train_loader = torch.utils.data.DataLoader(
             PathMNIST(root='data', split='train', download=True, transform=transforms.Compose([
-                transforms.RandomRotation(degrees=10),  # 随机旋转±10度
-                transforms.RandomHorizontalFlip(p=0.5),  # 50%概率水平翻转
-                transforms.RandomAffine(degrees=0, translate=(0.1, 0.1)),  # 随机平移
+                # transforms.RandomRotation(degrees=10),  # 随机旋转±10度
+                # transforms.RandomHorizontalFlip(p=0.5),  # 50%概率水平翻转
+                # transforms.RandomAffine(degrees=0, translate=(0.1, 0.1)),  # 随机平移
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,), (0.5,))
             ])),
@@ -72,14 +72,14 @@ if __name__ == "__main__":
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,), (0.5,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
         test_loader = torch.utils.data.DataLoader(
             PathMNIST(root='data', split='test', download=True, transform=transforms.Compose([
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,), (0.5,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
     elif datasets_name == "chestmnist":
         train_loader = torch.utils.data.DataLoader(
@@ -94,14 +94,14 @@ if __name__ == "__main__":
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,), (0.5,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
         test_loader = torch.utils.data.DataLoader(
             ChestMNIST(root='data', split='test', download=True, transform=transforms.Compose([
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,), (0.5,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
     elif datasets_name == "octmnist":
         train_loader = torch.utils.data.DataLoader(
@@ -116,14 +116,14 @@ if __name__ == "__main__":
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,), (0.5,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
         test_loader = torch.utils.data.DataLoader(
             OCTMNIST(root='data', split='test', download=True, transform=transforms.Compose([
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,), (0.5,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
     elif datasets_name == "pneumoniamnist":
         train_loader = torch.utils.data.DataLoader(
@@ -138,14 +138,14 @@ if __name__ == "__main__":
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,), (0.5,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
         test_loader = torch.utils.data.DataLoader(
             PneumoniaMNIST(root='data', split='test', download=True, transform=transforms.Compose([
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,), (0.5,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
     elif datasets_name == "retinamnist":
         train_loader = torch.utils.data.DataLoader(
@@ -160,14 +160,14 @@ if __name__ == "__main__":
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,), (0.5,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
         test_loader = torch.utils.data.DataLoader(
             RetinaMNIST(root='data', split='test', download=True, transform=transforms.Compose([
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,), (0.5,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
     elif datasets_name == "breastmnist":
         train_loader = torch.utils.data.DataLoader(
@@ -182,14 +182,14 @@ if __name__ == "__main__":
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,), (0.5,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
         test_loader = torch.utils.data.DataLoader(
             BreastMNIST(root='data', split='test', download=True, transform=transforms.Compose([
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,), (0.5,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
     elif datasets_name == "dermamnist":
         train_loader = torch.utils.data.DataLoader(
@@ -204,14 +204,14 @@ if __name__ == "__main__":
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,), (0.5,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
         test_loader = torch.utils.data.DataLoader(
             DermaMNIST(root='data', split='test', download=True, transform=transforms.Compose([
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,), (0.5,))
             ])),
-            batch_size=config["batch_size"], shuffle=True
+            batch_size=config["batch_size"], shuffle=False
         )
     else:
         raise ValueError(f"Unknown datasets name: {datasets_name}")
@@ -226,7 +226,7 @@ if __name__ == "__main__":
 
     # 训练循环
     num_epochs = 50
-    best_test_acc = 0
+    best_acc = 0
     for epoch in range(num_epochs):
         model.train()
         total_loss = 0
@@ -244,6 +244,7 @@ if __name__ == "__main__":
         print(f'Epoch {epoch+1}, Loss: {total_loss / len(train_loader)}')
 
         # 验证循环
+        correct = 0
         model.eval()
         correct = 0
         with torch.no_grad():
@@ -266,8 +267,8 @@ if __name__ == "__main__":
         
         print(f'Test Accuracy: {100. * test_correct / len(test_loader.dataset)}%')
 
-        if (100. * test_correct / len(test_loader.dataset)) > best_test_acc:
-            best_test_acc = (100. * test_correct / len(test_loader.dataset))
+        if (100. * correct / len(val_loader.dataset)) > best_acc:
+            best_acc = (100. * correct / len(val_loader.dataset))
             torch.save(model.state_dict(), f"{model_name}_best_model.pth")
             print("Model saved!")
 
